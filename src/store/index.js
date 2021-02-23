@@ -13,7 +13,20 @@ const store = new Vuex.Store({
     settings,
     user
   },
-  getters
+  getters,
+  state:{
+    menu:[]
+  },
+  mutations:{
+    setMenu(state,menu){
+      state.menu=menu;
+      localStorage.setItem("menu",JSON.stringify(menu));
+    },
+    clearMenu(state){
+      state.menu=[];
+      localStorage.removeItem("menu");
+    }
+  }
 })
 
 export default store

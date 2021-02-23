@@ -22,6 +22,9 @@ axios.defaults.baseURL="http://127.0.0.1:3000"
 import qs from 'qs'
 Vue.prototype.qs=qs;
 
+import moment from 'moment'
+Vue.prototype.moment=moment;
+
 /**
  * If you don't want to use mock-server
  * you want to use MockJs for mock api

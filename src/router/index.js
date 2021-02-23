@@ -68,12 +68,12 @@ export const constantRoutes = [
         component: () => import('@/views/product/index'),
         meta: { title: '商品列表', icon: 'table' }
       },
-      {
-        path: 'tree',
-        name: 'Tree',
-        component: () => import('@/views/tree/index'),
-        meta: { title: 'Tree', icon: 'tree' }
-      }
+      // {
+      //   path: 'tree',
+      //   name: 'Tree',
+      //   component: () => import('@/views/tree/index'),
+      //   meta: { title: 'Tree', icon: 'tree' }
+      // }
     ]
   },
 
@@ -98,58 +98,68 @@ export const constantRoutes = [
     redirect: '/nested/menu1',
     name: 'Nested',
     meta: {
-      title: 'Nested',
+      title: '用户管理',
       icon: 'nested'
     },
     children: [
       {
-        path: 'menu1',
-        component: () => import('@/views/nested/menu1/index'), // Parent router-view
-        name: 'Menu1',
-        meta: { title: 'Menu1' },
-        children: [
-          {
-            path: 'menu1-1',
-            component: () => import('@/views/nested/menu1/menu1-1'),
-            name: 'Menu1-1',
-            meta: { title: 'Menu1-1' }
-          },
-          {
-            path: 'menu1-2',
-            component: () => import('@/views/nested/menu1/menu1-2'),
-            name: 'Menu1-2',
-            meta: { title: 'Menu1-2' },
-            children: [
-              {
-                path: 'menu1-2-1',
-                component: () => import('@/views/nested/menu1/menu1-2/menu1-2-1'),
-                name: 'Menu1-2-1',
-                meta: { title: 'Menu1-2-1' }
-              },
-              {
-                path: 'menu1-2-2',
-                component: () => import('@/views/nested/menu1/menu1-2/menu1-2-2'),
-                name: 'Menu1-2-2',
-                meta: { title: 'Menu1-2-2' }
-              }
-            ]
-          },
-          {
-            path: 'menu1-3',
-            component: () => import('@/views/nested/menu1/menu1-3'),
-            name: 'Menu1-3',
-            meta: { title: 'Menu1-3' }
-          }
-        ]
+        path: 'userlist',
+        component: () => import('@/views/user/userlist/index'), // Parent router-view
+        name: 'Userlist',
+        meta: { title: '用户列表',icon:'table' },
       },
       {
-        path: 'menu2',
-        component: () => import('@/views/nested/menu2/index'),
-        name: 'Menu2',
-        meta: { title: 'menu2' }
+        path: 'userrole',
+        component: () => import('@/views/user/userrole/index'),
+        name: 'Userrole',
+        meta: { title: '角色管理',icon:'user' }
+      },
+      {
+        path: 'userpower',
+        component: () => import('@/views/user/userpower/index'),
+        name: 'Userpower',
+        meta: { title: '权限管理',icon:'form' }
       }
     ]
   },
+
+  {
+    path: '/ceshi1',
+    component: Layout,
+    name: 'Ceshi1',
+    meta: { title: '测试页面1',icon:'user'},
+    children: [{
+      path: 'cesh1',
+      name: 'Cesh1',
+      component: () => import('@/views/ceshi/ceshi1'),
+      meta: { title: '测试页面1', icon: 'dashboard' }
+    }]
+  },
+  {
+    path: '/ceshi2',
+    component: Layout,
+    name: 'Ceshi2',
+    meta: { title: '测试页面2',icon:'user'},
+    children: [{
+      path: 'cesh2',
+      name: 'Cesh2',
+      component: () => import('@/views/ceshi/ceshi2'),
+      meta: { title: '测试页面2', icon: 'dashboard' }
+    }]
+  },
+  {
+    path: '/ceshi3',
+    component: Layout,
+    name: 'Ceshi3',
+    meta: { title: '测试页面3',icon:'user'},
+    children: [{
+      path: 'cesh3',
+      name: 'Cesh3',
+      component: () => import('@/views/ceshi/ceshi3'),
+      meta: { title: '测试页面3', icon: 'dashboard' }
+    }]
+  },
+
 
 
   // 404 page must be placed at the end !!!

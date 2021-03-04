@@ -1,6 +1,6 @@
 <template>
   <div class="app-container">
-    <el-button class="filter-item" style="margin-left: 10px;" type="primary" icon="el-icon-edit">
+    <el-button @click="addpro" class="filter-item" style="margin-left: 10px;" type="primary" icon="el-icon-edit">
       添加
     </el-button>
     <el-table
@@ -107,6 +107,9 @@ export default {
     this.fetchData(1,10);
   },
   methods: {
+    addpro(){
+      
+    },
     getList(data){
       //  console.log(data);
        this.fetchData(data.page,data.limit);

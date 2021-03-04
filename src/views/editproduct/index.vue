@@ -2,9 +2,9 @@
   <div class="app-container">
     <el-form ref="form" :model="form" label-width="120px">
       <el-form-item label="商品图片">
-        <!-- <el-input v-model="form.ptitle" /> -->
-        <img :src="form.pimg" alt="" style="width:10rem;">
+        <img :src="form.pimg" alt="" style="width: 10rem" />
       </el-form-item>
+
       <el-form-item label="商品编号">
         <el-input v-model="form.pid" readonly />
       </el-form-item>
@@ -24,7 +24,7 @@
         </el-col>
       </el-form-item> -->
       <el-form-item label="商品简介">
-        <el-input v-model="form.pintro" type="textarea"/>
+        <el-input v-model="form.pintro" type="textarea" />
       </el-form-item>
       <!-- <el-form-item label="Activity type">
         <el-checkbox-group v-model="form.type">
@@ -35,7 +35,7 @@
         </el-checkbox-group>
       </el-form-item> -->
       <el-form-item label="商品价格">
-        <el-input v-model="form.pprice" maxlength="8"/>
+        <el-input v-model="form.pprice" maxlength="8" />
       </el-form-item>
       <!-- <el-form-item label="Resources">
         <el-radio-group v-model="form.resource">
@@ -56,59 +56,72 @@
 
 <script>
 export default {
-  props:["pid"],
+  props: ["pid"],
   data() {
     return {
-      ptitle: '',
+      ptitle: "",
       pnumber: 0,
-      pintro:'',
-      pprice:0,
-      form:{
-        ptitle:this.ptitle,
-        pnumber:this.pnumber,
-        pintro:this.pintro,
-        pprice:this.pprice,
-        pid:this.pid
-      }
-    }
+      pintro: "",
+      pprice: 0,
+      form: {
+        ptitle: this.ptitle,
+        pnumber: this.pnumber,
+        pintro: this.pintro,
+        pprice: this.pprice,
+        pid: this.pid,
+      },
+    };
   },
-  created(){
-    this.axios.get("/details",{
-      params:{
-        pid:this.pid
-      }
-    }).then(result=>{
-      // console.log(result.data);
-      [this.form]=result.data;
-    })
+  created() {
+    this.axios
+      .get("/details", {
+        params: {
+          pid: this.pid,
+        },
+      })
+      .then((result) => {
+        // console.log(result.data);
+        [this.form] = result.data;
+      });
   },
   methods: {
+      handlePreview(file) {
+        console.log(file);
+      },
+      handleExceed(files, fileList) {
+        this.$message.warning(`当前限制选择 3 个文件，本次选择了 ${files.length} 个文件，共选择了 ${files.length + fileList.length} 个文件`);
+      },
+      beforeRemove(file, fileList) {
+        return this.$confirm(`确定移除 ${ file.name }？`);
+      },
     onSubmit() {
       // console.log(this.form);
       // this.$message('submit!')
-      this.axios.post("/updatepro",this.qs.stringify(this.form)).then(result=>{
-        console.log(result.data);
-        if(result.data.code==200){
-          this.$message({
-            message: '修改成功',
-            type: 'success'
-          })
-          this.$router.push("/example/product");
-        }
-      })
+      this.axios
+        .post("/updatepro", this.qs.stringify(this.form))
+        .then((result) => {
+          console.log(result.data);
+          if (result.data.code == 200) {
+            this.$message({
+              message: "修改成功",
+              type: "success",
+            });
+            this.$router.push("/example/product");
+          }
+        });
     },
     onCancel() {
       this.$message({
-        message: 'cancel!',
-        type: 'warning'
-      })
-    }
-  }
-}
+        message: "cancel!",
+        type: "warning",
+      });
+    },
+  },
+};
 </script>
 
 <style scoped>
-.line{
+.line {
   text-align: center;
 }
 </style>

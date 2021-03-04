@@ -58,9 +58,10 @@ export const constantRoutes = [
   {
     path: '/example',
     component: Layout,
-    redirect: '/example/table',
+    // redirect: '/example/table',
     name: 'Example',
-    meta: { title: '商品管理', icon: 'el-icon-s-help' },
+    alwaysShow: true,
+    meta: { title: '商品管理', icon: 'nested' },
     children: [
       {
         path: 'product',
@@ -93,10 +94,34 @@ export const constantRoutes = [
   },
 
   {
+    path: '/quanxian',
+    component: Layout,
+    name: 'Quanxian',
+    meta: {
+      title: '权限管理',
+      icon: 'nested'
+    },
+    children:[
+      {
+        path: 'powerlist',
+        component: () => import('@/views/user/powerlist/index'),
+        name: 'Powerlist',
+        meta: { title: '权限列表',icon:'form' }
+      },
+      {
+        path: 'userrole',
+        component: () => import('@/views/user/userrole/index'),
+        name: 'Userrole',
+        meta: { title: '角色管理',icon:'user' }
+      },
+    ]
+  },
+  {
     path: '/nested',
     component: Layout,
-    redirect: '/nested/menu1',
+    // redirect: '/nested/menu1',
     name: 'Nested',
+    alwaysShow: true,
     meta: {
       title: '用户管理',
       icon: 'nested'
@@ -108,18 +133,6 @@ export const constantRoutes = [
         name: 'Userlist',
         meta: { title: '用户列表',icon:'table' },
       },
-      {
-        path: 'userrole',
-        component: () => import('@/views/user/userrole/index'),
-        name: 'Userrole',
-        meta: { title: '角色管理',icon:'user' }
-      },
-      {
-        path: 'userpower',
-        component: () => import('@/views/user/userpower/index'),
-        name: 'Userpower',
-        meta: { title: '权限管理',icon:'form' }
-      }
     ]
   },
 

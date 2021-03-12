@@ -9,7 +9,7 @@ const app=express();
 app.listen(3000);
 
 app.use(cors({
-  origin: ['http://localhost:9528', 'http://127.0.0.1:9528']
+  origin: ['http://localhost:9528', 'http://127.0.0.1:9528','http://localhost:8080']
 }));
 
 
